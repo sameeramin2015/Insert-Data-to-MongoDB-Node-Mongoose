@@ -1,21 +1,22 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/fruitsDB");
-// creating new schema
-const fruitSchema = new mongoose.Schema({
+mongoose.connect("mongodb://localhost:27017/stockDB");
+
+// create new schema
+const stockSchema = new mongoose.Schema({
     name: String,
     rating: Number,
     review: String
 });
 
-// creating new model
+// create new model
+const Items = mongoose.model("Items", stockSchema);
 
-const Fruit = mongoose.model("Fruit", fruitSchema);
- // creating objects
+// create new object
 
- const fruit = new Fruit ({
-    name: "Apple",
-    rating: 7,
-    review: "tasty fruit"
- });
+const items = new Items ({
+    name: "laptop",
+    rating: 9,
+    review: "high speed laptop"
+});
 
- fruit.save();
+items.save();
